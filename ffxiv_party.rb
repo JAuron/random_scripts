@@ -3,6 +3,9 @@
 TANKS = 3
 HEALERS = 6
 DPS = 15
+
+TOTAL_NEEDED = TANKS + HEALERS + DPS
+
 players = [
 						{name: 'Lyna Wild', tank: false, healer: true, dps: true, needed: false},
 						{name: 'Ikara Avalonia', tank: false, healer: true, dps: true, needed: false},
@@ -50,13 +53,14 @@ players = players.partition { |player| player[:needed] == true }.flatten
 # initializes the party and constants
 party = {tank: [], healer: [], dps: []}
 reserves = []
-party_size = ([TANKS+HEALERS+DPS, players.size].max) - 1
+party_size = ([TOTAL_NEEDED, players.size].max)
 
 
 # Adds an index to the selected players list
 selected_players = []
-party_size.times do |x|
-	selected_players << [players[x], x]
+players.size.times do |x|
+	selected_players << [players[x], x] if x < party_size
+	players[x] = [players[x], x]
 end
 
 tank_only = selected_players.select { |player, index| player[:tank] && !player[:healer] && !player[:dps] }
@@ -73,6 +77,8 @@ dps_only = selected_players.select { |player, index| !player[:tank] && !player[:
 party[:dps] = dps_only.first(DPS)
 reserves << dps_only[DPS..-1]
 selected_players = selected_players - dps_only
+
+reserves.compact!
 
 # Post assignment count
 needed_per_class = { tank: TANKS - party[:tank].count, healer: HEALERS - party[:healer].count, dps: DPS - party[:dps].count }.sort_by { |class_name, value| value}
@@ -109,17 +115,22 @@ all_rounders.each do |player|
 end
 selected_players = selected_players - all_rounders
 
-party.each do |role, players|
+party.each do |role, player_names|
 	puts '------------'
 	puts role.upcase
 	puts '------------'
-	players.each do |player|
-		puts player[0][:name]
+	player_names.each do |player_name|
+		puts player_name[0][:name]
+		players.delete(player_name)
 	end
 end
 
-players = players - selected_players
-puts players
+puts '--------------'
+puts 'RESERVES'
+puts '--------------'
+players.each do |player_name|
+	puts player_name[0][:name]
+end
 
 
 # puts "PARTY #{x+1}"
