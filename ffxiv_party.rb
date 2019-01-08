@@ -1,4 +1,4 @@
-# {name: '', tank: false, healer: false, dps: false, needed: false},
+# {name: '', tank: false, healer: false, dps: false, redwing: true},
 
 TANKS = 3
 HEALERS = 6
@@ -7,31 +7,24 @@ DPS = 15
 TOTAL_NEEDED = TANKS + HEALERS + DPS
 
 players = [
-						{name: 'Lyna Wild', tank: false, healer: true, dps: true, needed: false},
-						{name: 'Ikara Avalonia', tank: false, healer: true, dps: true, needed: false},
-						{name: 'Luka Ducouteau', tank: false, healer: true, dps: false, needed: true},
-						{name: 'Auron Masamune', tank: true, healer: false, dps: false, needed: false},
-						{name: 'Sen Soken', tank: true, healer: true, dps: true, needed: false},
-						{name: 'Kakarot Son', tank: true, healer: false, dps: false, needed: false},
-						{name: 'Cassiesaurus Nukupuku', tank: true, healer: false, dps: true, needed: false},
-						{name: 'Endeavour Wentworth', tank: false, healer: false, dps: true, needed: false},
-						{name: 'Yugure Noctem', tank: true, healer: false, dps: true, needed: false},
-						{name: 'Alan Partridge', tank: false, healer: false, dps: true, needed: false},
-						{name: 'Penis McButtface (Skarlet Sinborn)', tank: true, healer: true, dps: true, needed: false},
-						{name: 'Yma Night', tank: false, healer: false, dps: true, needed: false},
-						{name: 'Shinon Miyumi', tank: false, healer: true, dps: true, needed: false},
-						{name: 'Melaikh Kesaiyn', tank: false, healer: false, dps: true, needed: false},
-						{name: 'Lala Beilschmidt', tank: false, healer: true, dps: true, needed: false},
-						{name: 'Zaros Alune', tank: false, healer: true, dps: true, needed: false},
-						{name: 'Aqualta Tia', tank: false, healer: true, dps: false, needed: false},
-						{name: 'Hexissa Cloudseer', tank: false, healer: false, dps: true, needed: true},
-						{name: 'Tao Matsuki', tank: true, healer: false, dps: true, needed: false},
-						{name: 'Shinx Flash', tank: true, healer: true, dps: true, needed: false},
-						{name: 'Minamoto Kinamo', tank: true, healer: true, dps: true, needed: false},
-						{name: 'Old Man Outrack', tank: true, healer: false, dps: false, needed: false},
-						{name: 'Jmie Ashtaum', tank: false, healer: false, dps: true, needed: false},
-						{name: 'Cecilia Nuit', tank: true, healer: true, dps: true, needed: false},
-						{name: 'Serena Raha', tank: false, healer: false, dps: true, needed: true}
+						{name: 'Auron Masamune', tank: true, healer: false, dps: false, redwing: true},
+						{name: 'Lyna Wild', tank: false, healer: true, dps: true, redwing: true},
+						{name: 'Atrus Escher', tank: false, healer: false, dps: true, redwing: true},
+						{name: 'Dothrah Tenkjoth', tank: false, healer: true, dps: false, redwing: true},
+						{name: 'Lala Beilschmidt', tank: false, healer: false, dps: true, redwing: false},
+						{name: 'Boobs McBoobie (Skarlet Sinborn)', tank: false, healer: true, dps: false, redwing: true},
+						{name: 'Cecilia Nuit', tank: true, healer: false, dps: true, redwing: false},
+						{name: 'Alan Partridge', tank: false, healer: false, dps: true, redwing: true},
+						{name: 'Mintie Choqtchip', tank: true, healer: false, dps: true, redwing: true},
+						{name: 'Ilfana Mildaurion', tank: false, healer: true, dps: true, redwing: true},
+						{name: 'Melaikh Kesaiyn', tank: false, healer: false, dps: true, redwing: true},
+						{name: 'Yugure Noctem', tank: true, healer: false, dps: true, redwing: true},
+						{name: 'Kiiroi Yuki', tank: true, healer: true, dps: true, redwing: true},
+						{name: 'Emilia Flueret', tank: false, healer: true, dps: true, redwing: true},
+						{name: 'Shinon Miyumi', tank: false, healer: true, dps: true, redwing: true},
+						{name: 'Pingu Hingu', tank: false, healer: false, dps: true, redwing: true},
+						{name: 'Atherlor Oakroot', tank: false, healer: true, dps: true, redwing: true},
+						{name: 'El Spazzy', tank: false, healer: false, dps: true, redwing: false}
 					]
 
 # Manual sorting
@@ -48,7 +41,7 @@ players = [
 
 # Safest way to put needed and redwing players at the top of the list
 # players = players.partition { |player| player[:redwing] == true }.flatten
-players = players.partition { |player| player[:needed] == true }.flatten
+players = players.partition { |player| player[:redwing] == true }.flatten
 
 # initializes the party and constants
 party = {tank: [], healer: [], dps: []}
