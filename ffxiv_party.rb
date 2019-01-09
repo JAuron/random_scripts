@@ -21,10 +21,16 @@ players = [
 						{name: 'Yugure Noctem', tank: true, healer: false, dps: true, redwing: true},
 						{name: 'Kiiroi Yuki', tank: true, healer: true, dps: true, redwing: true},
 						{name: 'Emilia Flueret', tank: false, healer: true, dps: true, redwing: true},
-						{name: 'Shinon Miyumi', tank: false, healer: true, dps: true, redwing: true},
 						{name: 'Pingu Hingu', tank: false, healer: false, dps: true, redwing: true},
-						{name: 'Atherlor Oakroot', tank: false, healer: true, dps: true, redwing: true},
-						{name: 'El Spazzy', tank: false, healer: false, dps: true, redwing: false}
+						{name: 'Atherlor Oakroot', tank: false, healer: false, dps: true, redwing: true},
+						{name: 'El Spazzy', tank: false, healer: false, dps: true, redwing: false},
+						{name: 'Old Man Outrack', tank: true, healer: false, dps: false, redwing: false},
+						{name: 'Shahghali Kha', tank: false, healer: false, dps: true, redwing: false},
+						{name: 'Neko Saru', tank: false, healer: true, dps: false, redwing: true},
+						{name: 'Nameless Rex', tank: false, healer: false, dps: true, redwing: true},
+						{name: 'Avelina Goldbrand', tank: false, healer: false, dps: true, redwing: false},
+						{name: 'Lleo Klynsnofloekin', tank: false, healer: false, dps: true, redwing: false},
+						{name: 'Psyichi Darkcrow', tank: false, healer: false, dps: true, redwing: false}
 					]
 
 # Manual sorting
@@ -110,7 +116,7 @@ selected_players = selected_players - all_rounders
 
 party.each do |role, player_names|
 	puts '------------'
-	puts role.upcase
+	puts "#{role.upcase} - #{player_names.count}" 
 	puts '------------'
 	player_names.each do |player_name|
 		puts player_name[0][:name]
